@@ -1,0 +1,214 @@
+{
+  "staff": [
+    {
+      "name": "Ahmed Ibrahim",
+      "email": "ahmed.ibrahim@mndf.gov.mv",
+      "department": "IT Division",
+      "rank": "Sergeant",
+      "phone": "+960 991-2345"
+    },
+    {
+      "name": "Mohamed Nasheed",
+      "email": "mohamed.nasheed@mndf.gov.mv",
+      "department": "Engineering",
+      "rank": "Corporal",
+      "phone": "+960 992-3456"
+    },
+    {
+      "name": "Ali Rauf",
+      "email": "ali.rauf@mndf.gov.mv",
+      "department": "Maintenance",
+      "rank": "Private",
+      "phone": "+960 993-4567"
+    },
+    {
+      "name": "Hussain Shafeeq",
+      "email": "hussain.shafeeq@mndf.gov.mv",
+      "department": "Logistics",
+      "rank": "Warrant Officer",
+      "phone": "+960 994-5678"
+    },
+    {
+      "name": "Faisal Mohamed",
+      "email": "faisal.mohamed@mndf.gov.mv",
+      "department": "IT Division",
+      "rank": "Corporal",
+      "phone": "+960 995-6789"
+    },
+    {
+      "name": "Nashid Nizar",
+      "email": "nashid.nizar@mndf.gov.mv",
+      "department": "Engineering",
+      "rank": "Sergeant",
+      "phone": "+960 996-7890"
+    },
+    {
+      "name": "Ibrahim Waheed",
+      "email": "ibrahim.waheed@mndf.gov.mv",
+      "department": "Maintenance",
+      "rank": "Private First Class",
+      "phone": "+960 997-8901"
+    },
+    {
+      "name": "Sobah Amir",
+      "email": "sobah.amir@mndf.gov.mv",
+      "department": "Operations",
+      "rank": "Lieutenant",
+      "phone": "+960 998-9012"
+    },
+    {
+      "name": "Jadhulla Juman",
+      "email": "jadhulla.juman@mndf.gov.mv",
+      "department": "IT Division",
+      "rank": "Private",
+      "phone": "+960 999-0123"
+    },
+    {
+      "name": "Azeem Adam",
+      "email": "azeem.adam@mndf.gov.mv",
+      "department": "Engineering",
+      "rank": "Corporal",
+      "phone": "+960 990-1234"
+    },
+    {
+      "name": "Shahid Rasheed",
+      "email": "shahid.rasheed@mndf.gov.mv",
+      "department": "Maintenance",
+      "rank": "Sergeant",
+      "phone": "+960 981-2345"
+    },
+    {
+      "name": "Zahir Moosa",
+      "email": "zahir.moosa@mndf.gov.mv",
+      "department": "Logistics",
+      "rank": "Private",
+      "phone": "+960 982-3456"
+    },
+    {
+      "name": "Naushad Waheed",
+      "email": "naushad.waheed@mndf.gov.mv",
+      "department": "IT Division",
+      "rank": "Corporal",
+      "phone": "+960 983-4567"
+    },
+    {
+      "name": "Rishwan Gasim",
+      "email": "rishwan.gasim@mndf.gov.mv",
+      "department": "Engineering",
+      "rank": "Private First Class",
+      "phone": "+960 984-5678"
+    },
+    {
+      "name": "Hassan Manik",
+      "email": "hassan.manik@mndf.gov.mv",
+      "department": "Maintenance",
+      "rank": "Sergeant",
+      "phone": "+960 985-6789"
+    },
+    {
+      "name": "Imran Abdulla",
+      "email": "imran.abdulla@mndf.gov.mv",
+      "department": "Operations",
+      "rank": "Captain",
+      "phone": "+960 986-7890"
+    },
+    {
+      "name": "Munaz Naeem",
+      "email": "munaz.naeem@mndf.gov.mv",
+      "department": "IT Division",
+      "rank": "Private",
+      "phone": "+960 987-8901"
+    },
+    {
+      "name": "Aslam Rasheed",
+      "email": "aslam.rasheed@mndf.gov.mv",
+      "department": "Engineering",
+      "rank": "Warrant Officer",
+      "phone": "+960 988-9012"
+    },
+    {
+      "name": "Ilyas Mohamed",
+      "email": "ilyas.mohamed@mndf.gov.mv",
+      "department": "Maintenance",
+      "rank": "Corporal",
+      "phone": "+960 989-0123"
+    },
+    {
+      "name": "Shiyam Shafeeu",
+      "email": "shiyam.shafeeu@mndf.gov.mv",
+      "department": "Logistics",
+      "rank": "Sergeant",
+      "phone": "+960 980-1234"
+    },
+    {
+      "name": "Mifzal Ibrahim",
+      "email": "mifzal.ibrahim@mndf.gov.mv",
+      "department": "IT Division",
+      "rank": "Private First Class",
+      "phone": "+960 971-2345"
+    },
+    {
+      "name": "Anas Nizar",
+      "email": "anas.nizar@mndf.gov.mv",
+      "department": "Engineering",
+      "rank": "Private",
+      "phone": "+960 972-3456"
+    },
+    {
+      "name": "Fathullah Juman",
+      "email": "fathullah.juman@mndf.gov.mv",
+      "department": "Maintenance",
+      "rank": "Corporal",
+      "phone": "+960 973-4567"
+    },
+    {
+      "name": "Akmal Latheef",
+      "email": "akmal.latheef@mndf.gov.mv",
+      "department": "Operations",
+      "rank": "Major",
+      "phone": "+960 974-5678"
+    },
+    {
+      "name": "Saeed Ahmed",
+      "email": "saeed.ahmed@mndf.gov.mv",
+      "department": "IT Division",
+      "rank": "Sergeant",
+      "phone": "+960 975-6789"
+    },
+    {
+      "name": "Jinaah Waheed",
+      "email": "jinaah.waheed@mndf.gov.mv",
+      "department": "Engineering",
+      "rank": "Private First Class",
+      "phone": "+960 976-7890"
+    },
+    {
+      "name": "Nizam Moosa",
+      "email": "nizam.moosa@mndf.gov.mv",
+      "department": "Maintenance",
+      "rank": "Warrant Officer",
+      "phone": "+960 977-8901"
+    },
+    {
+      "name": "Ashraf Adam",
+      "email": "ashraf.adam@mndf.gov.mv",
+      "department": "Logistics",
+      "rank": "Corporal",
+      "phone": "+960 978-9012"
+    },
+    {
+      "name": "Sajid Rauf",
+      "email": "sajid.rauf@mndf.gov.mv",
+      "department": "Operations",
+      "rank": "Sergeant",
+      "phone": "+960 979-0123"
+    },
+    {
+      "name": "Luqman Latheef",
+      "email": "luqman.latheef@mndf.gov.mv",
+      "department": "IT Division",
+      "rank": "Private",
+      "phone": "+960 961-2345"
+    }
+  ]
+}

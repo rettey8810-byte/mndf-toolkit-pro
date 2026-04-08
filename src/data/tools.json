@@ -1,0 +1,428 @@
+{
+  "tools": [
+    {
+      "name": "Laptop - Dell Latitude 5520",
+      "category": "IT Equipment",
+      "quantity": 15,
+      "availableQuantity": 12,
+      "condition": "Good",
+      "location": "IT Storage Room A"
+    },
+    {
+      "name": "Desktop Computer - HP ProDesk",
+      "category": "IT Equipment",
+      "quantity": 20,
+      "availableQuantity": 18,
+      "condition": "Good",
+      "location": "IT Storage Room A"
+    },
+    {
+      "name": "Monitor - Dell 24 inch Full HD",
+      "category": "IT Equipment",
+      "quantity": 30,
+      "availableQuantity": 25,
+      "condition": "Good",
+      "location": "IT Storage Room B"
+    },
+    {
+      "name": "Keyboard - Wireless Logitech",
+      "category": "IT Equipment",
+      "quantity": 40,
+      "availableQuantity": 35,
+      "condition": "Good",
+      "location": "IT Storage Room B"
+    },
+    {
+      "name": "Mouse - Wireless Optical",
+      "category": "IT Equipment",
+      "quantity": 50,
+      "availableQuantity": 45,
+      "condition": "Good",
+      "location": "IT Storage Room B"
+    },
+    {
+      "name": "Printer - HP LaserJet Pro",
+      "category": "IT Equipment",
+      "quantity": 8,
+      "availableQuantity": 6,
+      "condition": "Good",
+      "location": "IT Storage Room A"
+    },
+    {
+      "name": "Scanner - Canon imageFORMULA",
+      "category": "IT Equipment",
+      "quantity": 5,
+      "availableQuantity": 4,
+      "condition": "Good",
+      "location": "IT Storage Room A"
+    },
+    {
+      "name": "Projector - Epson PowerLite",
+      "category": "IT Equipment",
+      "quantity": 6,
+      "availableQuantity": 5,
+      "condition": "Good",
+      "location": "Multimedia Room"
+    },
+    {
+      "name": "Webcam - Logitech C920 HD",
+      "category": "IT Equipment",
+      "quantity": 12,
+      "availableQuantity": 10,
+      "condition": "Good",
+      "location": "IT Storage Room B"
+    },
+    {
+      "name": "Headset - USB Stereo Headphone",
+      "category": "IT Equipment",
+      "quantity": 25,
+      "availableQuantity": 22,
+      "condition": "Good",
+      "location": "IT Storage Room B"
+    },
+    {
+      "name": "Network Switch - Cisco 24-Port",
+      "category": "IT Equipment",
+      "quantity": 4,
+      "availableQuantity": 2,
+      "condition": "Good",
+      "location": "Server Room"
+    },
+    {
+      "name": "Router - Cisco Wireless",
+      "category": "IT Equipment",
+      "quantity": 6,
+      "availableQuantity": 4,
+      "condition": "Good",
+      "location": "Server Room"
+    },
+    {
+      "name": "UPS - APC 1500VA",
+      "category": "IT Equipment",
+      "quantity": 3,
+      "availableQuantity": 2,
+      "condition": "Good",
+      "location": "Server Room"
+    },
+    {
+      "name": "External Hard Drive - 2TB",
+      "category": "IT Equipment",
+      "quantity": 10,
+      "availableQuantity": 8,
+      "condition": "Good",
+      "location": "IT Storage Room B"
+    },
+    {
+      "name": "USB Flash Drive - 64GB",
+      "category": "IT Equipment",
+      "quantity": 30,
+      "availableQuantity": 25,
+      "condition": "Good",
+      "location": "IT Storage Room B"
+    },
+    {
+      "name": "HDMI Cable - 6 feet",
+      "category": "IT Equipment",
+      "quantity": 20,
+      "availableQuantity": 18,
+      "condition": "Good",
+      "location": "IT Storage Room B"
+    },
+    {
+      "name": "Ethernet Cable - Cat6",
+      "category": "IT Equipment",
+      "quantity": 50,
+      "availableQuantity": 45,
+      "condition": "Good",
+      "location": "IT Storage Room B"
+    },
+    {
+      "name": "Power Strip - Surge Protected",
+      "category": "IT Equipment",
+      "quantity": 15,
+      "availableQuantity": 12,
+      "condition": "Good",
+      "location": "IT Storage Room B"
+    },
+    {
+      "name": "Tablet - iPad 10th Gen",
+      "category": "IT Equipment",
+      "quantity": 8,
+      "availableQuantity": 6,
+      "condition": "Good",
+      "location": "IT Storage Room A"
+    },
+    {
+      "name": "Smartphone - Samsung Galaxy",
+      "category": "IT Equipment",
+      "quantity": 10,
+      "availableQuantity": 8,
+      "condition": "Good",
+      "location": "IT Storage Room A"
+    },
+    {
+      "name": "Hammer - Claw Hammer 16oz",
+      "category": "Carpentry Tools",
+      "quantity": 12,
+      "availableQuantity": 10,
+      "condition": "Good",
+      "location": "Carpentry Workshop A"
+    },
+    {
+      "name": "Hammer - Ball Peen 24oz",
+      "category": "Carpentry Tools",
+      "quantity": 8,
+      "availableQuantity": 8,
+      "condition": "Good",
+      "location": "Carpentry Workshop A"
+    },
+    {
+      "name": "Screwdriver Set - 6 Piece",
+      "category": "Carpentry Tools",
+      "quantity": 15,
+      "availableQuantity": 12,
+      "condition": "Good",
+      "location": "Carpentry Workshop B"
+    },
+    {
+      "name": "Cordless Drill - 18V DeWalt",
+      "category": "Carpentry Tools",
+      "quantity": 6,
+      "availableQuantity": 4,
+      "condition": "Good",
+      "location": "Carpentry Workshop A"
+    },
+    {
+      "name": "Circular Saw - 7-1/4 inch",
+      "category": "Carpentry Tools",
+      "quantity": 4,
+      "availableQuantity": 3,
+      "condition": "Good",
+      "location": "Carpentry Workshop A"
+    },
+    {
+      "name": "Jigsaw - Variable Speed",
+      "category": "Carpentry Tools",
+      "quantity": 3,
+      "availableQuantity": 2,
+      "condition": "Good",
+      "location": "Carpentry Workshop A"
+    },
+    {
+      "name": "Table Saw - 10 inch",
+      "category": "Carpentry Tools",
+      "quantity": 2,
+      "availableQuantity": 2,
+      "condition": "Good",
+      "location": "Carpentry Workshop A"
+    },
+    {
+      "name": "Miter Saw - Compound",
+      "category": "Carpentry Tools",
+      "quantity": 2,
+      "availableQuantity": 2,
+      "condition": "Good",
+      "location": "Carpentry Workshop A"
+    },
+    {
+      "name": "Router - 1-3/4 HP",
+      "category": "Carpentry Tools",
+      "quantity": 3,
+      "availableQuantity": 3,
+      "condition": "Good",
+      "location": "Carpentry Workshop A"
+    },
+    {
+      "name": "Electric Sander - Orbital",
+      "category": "Carpentry Tools",
+      "quantity": 5,
+      "availableQuantity": 4,
+      "condition": "Good",
+      "location": "Carpentry Workshop A"
+    },
+    {
+      "name": "Nail Gun - Pneumatic",
+      "category": "Carpentry Tools",
+      "quantity": 4,
+      "availableQuantity": 3,
+      "condition": "Good",
+      "location": "Carpentry Workshop A"
+    },
+    {
+      "name": "Staple Gun - Heavy Duty",
+      "category": "Carpentry Tools",
+      "quantity": 8,
+      "availableQuantity": 7,
+      "condition": "Good",
+      "location": "Carpentry Workshop B"
+    },
+    {
+      "name": "Tape Measure - 25ft",
+      "category": "Carpentry Tools",
+      "quantity": 20,
+      "availableQuantity": 18,
+      "condition": "Good",
+      "location": "Carpentry Workshop B"
+    },
+    {
+      "name": "Level - 24 inch Torpedo",
+      "category": "Carpentry Tools",
+      "quantity": 10,
+      "availableQuantity": 9,
+      "condition": "Good",
+      "location": "Carpentry Workshop B"
+    },
+    {
+      "name": "Chisel Set - 4 Piece Wood",
+      "category": "Carpentry Tools",
+      "quantity": 12,
+      "availableQuantity": 10,
+      "condition": "Good",
+      "location": "Carpentry Workshop B"
+    },
+    {
+      "name": "Hand Saw - Crosscut 26 inch",
+      "category": "Carpentry Tools",
+      "quantity": 8,
+      "availableQuantity": 7,
+      "condition": "Good",
+      "location": "Carpentry Workshop B"
+    },
+    {
+      "name": "Hacksaw - 12 inch",
+      "category": "Carpentry Tools",
+      "quantity": 6,
+      "availableQuantity": 6,
+      "condition": "Good",
+      "location": "Carpentry Workshop B"
+    },
+    {
+      "name": "Plane - Block Plane",
+      "category": "Carpentry Tools",
+      "quantity": 5,
+      "availableQuantity": 5,
+      "condition": "Good",
+      "location": "Carpentry Workshop B"
+    },
+    {
+      "name": "Clamp Set - Bar Clamps 4pc",
+      "category": "Carpentry Tools",
+      "quantity": 10,
+      "availableQuantity": 8,
+      "condition": "Good",
+      "location": "Carpentry Workshop B"
+    },
+    {
+      "name": "C-Clamp Set - 6 Piece",
+      "category": "Carpentry Tools",
+      "quantity": 15,
+      "availableQuantity": 13,
+      "condition": "Good",
+      "location": "Carpentry Workshop B"
+    },
+    {
+      "name": "Square - Carpenter's Speed",
+      "category": "Carpentry Tools",
+      "quantity": 12,
+      "availableQuantity": 11,
+      "condition": "Good",
+      "location": "Carpentry Workshop B"
+    },
+    {
+      "name": "Utility Knife - Retractable",
+      "category": "Carpentry Tools",
+      "quantity": 18,
+      "availableQuantity": 15,
+      "condition": "Good",
+      "location": "Carpentry Workshop B"
+    },
+    {
+      "name": "Workbench - Portable",
+      "category": "Carpentry Tools",
+      "quantity": 4,
+      "availableQuantity": 3,
+      "condition": "Good",
+      "location": "Carpentry Workshop A"
+    },
+    {
+      "name": "Tool Box - 20 inch Plastic",
+      "category": "Carpentry Tools",
+      "quantity": 15,
+      "availableQuantity": 12,
+      "condition": "Good",
+      "location": "Carpentry Storage"
+    },
+    {
+      "name": "Safety Glasses - Impact Resistant",
+      "category": "Carpentry Tools",
+      "quantity": 30,
+      "availableQuantity": 28,
+      "condition": "Good",
+      "location": "Carpentry Storage"
+    },
+    {
+      "name": "Work Gloves - Leather",
+      "category": "Carpentry Tools",
+      "quantity": 20,
+      "availableQuantity": 18,
+      "condition": "Good",
+      "location": "Carpentry Storage"
+    },
+    {
+      "name": "Dust Mask - N95",
+      "category": "Carpentry Tools",
+      "quantity": 50,
+      "availableQuantity": 45,
+      "condition": "Good",
+      "location": "Carpentry Storage"
+    },
+    {
+      "name": "Ear Protection - Ear Muffs",
+      "category": "Carpentry Tools",
+      "quantity": 15,
+      "availableQuantity": 14,
+      "condition": "Good",
+      "location": "Carpentry Storage"
+    },
+    {
+      "name": "Cordless Impact Driver",
+      "category": "Carpentry Tools",
+      "quantity": 5,
+      "availableQuantity": 4,
+      "condition": "Good",
+      "location": "Carpentry Workshop A"
+    },
+    {
+      "name": "Reciprocating Saw",
+      "category": "Carpentry Tools",
+      "quantity": 3,
+      "availableQuantity": 3,
+      "condition": "Good",
+      "location": "Carpentry Workshop A"
+    },
+    {
+      "name": "Angle Grinder - 4-1/2 inch",
+      "category": "Carpentry Tools",
+      "quantity": 4,
+      "availableQuantity": 3,
+      "condition": "Good",
+      "location": "Carpentry Workshop A"
+    },
+    {
+      "name": "Heat Gun - Variable Temp",
+      "category": "Carpentry Tools",
+      "quantity": 3,
+      "availableQuantity": 3,
+      "condition": "Good",
+      "location": "Carpentry Workshop A"
+    },
+    {
+      "name": "Multi-Tool - Oscillating",
+      "category": "Carpentry Tools",
+      "quantity": 4,
+      "availableQuantity": 3,
+      "condition": "Good",
+      "location": "Carpentry Workshop A"
+    }
+  ]
+}
