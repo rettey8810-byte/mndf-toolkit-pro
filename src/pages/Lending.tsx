@@ -3,7 +3,7 @@ import { collection, getDocs, addDoc, updateDoc, doc, query, where } from 'fireb
 import { db } from '../firebase';
 import { useAuth } from '../context/AuthContext';
 import type { Tool, Transaction, Staff } from '../types';
-import { Plus, Search, X, ArrowRightCircle } from 'lucide-react';
+import { Search, X, ArrowRightCircle } from 'lucide-react';
 
 export default function IssueTools() {
   const { currentUser, hasPermission, isSuperAdmin } = useAuth();

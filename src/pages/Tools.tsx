@@ -3,7 +3,7 @@ import { collection, getDocs, addDoc, updateDoc, deleteDoc, doc, query, orderBy 
 import { db } from '../firebase';
 import { useAuth } from '../context/AuthContext';
 import type { Tool } from '../types';
-import { Plus, Search, Edit2, Trash2, X, Filter, ChevronDown } from 'lucide-react';
+import { Plus, Search, Edit2, Trash2, X } from 'lucide-react';
 import ImageUpload from '../components/ImageUpload';
 import { logAction } from '../scripts/auditLog';
 

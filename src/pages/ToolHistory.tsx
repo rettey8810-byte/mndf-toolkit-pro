@@ -4,8 +4,8 @@ import { db } from '../firebase';
 import { useParams, useNavigate } from 'react-router-dom';
 import type { Tool, Transaction, MaintenanceLog } from '../types';
 import { 
-  History, Package, ArrowRightLeft, Wrench, Calendar,
-  User, Clock, ChevronLeft, AlertCircle
+  History, Package, ArrowRightLeft, Wrench,
+  User, ChevronLeft, AlertCircle
 } from 'lucide-react';
 import { format } from 'date-fns';
 

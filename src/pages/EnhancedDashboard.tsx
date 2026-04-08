@@ -17,8 +17,8 @@ export default function EnhancedDashboard() {
     totalTools: 0, availableTools: 0, borrowedTools: 0,
     underMaintenance: 0, overdueItems: 0, lowStockItems: 0,
   });
-  const [tools, setTools] = useState<Tool[]>([]);
-  const [transactions, setTransactions] = useState<Transaction[]>([]);
+  const [, setTools] = useState<Tool[]>([]);
+  const [, setTransactions] = useState<Transaction[]>([]);
   const [staff, setStaff] = useState<Staff[]>([]);
   const [loading, setLoading] = useState(true);
   const [weeklyData, setWeeklyData] = useState<any[]>([]);

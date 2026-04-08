@@ -1,9 +1,9 @@
 import { useEffect, useState } from 'react';
-import { collection, getDocs, addDoc, updateDoc, deleteDoc, doc, query, where, orderBy } from 'firebase/firestore';
+import { collection, getDocs, addDoc, updateDoc, doc, query, orderBy } from 'firebase/firestore';
 import { db } from '../firebase';
 import { useAuth } from '../context/AuthContext';
 import type { Tool, Staff } from '../types';
-import { Plus, Edit2, Trash2, X, Calendar, Clock, CheckCircle, AlertCircle, Bookmark } from 'lucide-react';
+import { Plus, Trash2, X, Calendar, CheckCircle, Bookmark } from 'lucide-react';
 import { format, isAfter, isBefore, addDays } from 'date-fns';
 
 interface Reservation {
@@ -30,7 +30,6 @@ export default function Reservations() {
   const [staff, setStaff] = useState<Staff[]>([]);
   const [loading, setLoading] = useState(true);
   const [showModal, setShowModal] = useState(false);
-  const [editingReservation, setEditingReservation] = useState<Reservation | null>(null);
   const [formData, setFormData] = useState({
     toolId: '',
     staffId: '',
@@ -124,16 +123,6 @@ export default function Reservations() {
     }
   };
 
-  const deleteReservation = async (id: string) => {
-    if (!confirm('Are you sure you want to delete this reservation?')) return;
-    try {
-      await deleteDoc(doc(db, 'reservations', id));
-      fetchData();
-    } catch (error) {
-      console.error('Error deleting reservation:', error);
-    }
-  };
-
   const getStatusColor = (status: Reservation['status']) => {
     switch (status) {
       case 'Pending': return 'bg-yellow-100 text-yellow-700';
@@ -146,16 +135,11 @@ export default function Reservations() {
   };
 
   const isUpcoming = (res: Reservation) => isAfter(res.startDate, new Date());
-  const isActive = (res: Reservation) => 
-    (res.status === 'Approved' || res.status === 'Pending') && 
-    !isAfter(res.endDate, new Date()) && 
-    !isBefore(res.endDate, new Date());
   const isOverdue = (res: Reservation) => 
     (res.status === 'Approved' || res.status === 'Pending') && 
     isBefore(res.endDate, new Date());
 
   const upcomingReservations = reservations.filter(isUpcoming);
-  const activeReservations = reservations.filter(isActive);
   const overdueReservations = reservations.filter(isOverdue);
 
   if (loading) {
