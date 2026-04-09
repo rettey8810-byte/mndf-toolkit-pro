@@ -111,10 +111,6 @@ export default function Login() {
               </button>
             </form>
 
-            <div className="mt-6 text-center text-sm text-gray-500">
-              <p>Default Super Admin:</p>
-              <p className="font-mono bg-gray-100 px-2 py-1 rounded mt-1">admin@mndf.com / admin123</p>
-            </div>
           </div>
         </div>
       </div>
