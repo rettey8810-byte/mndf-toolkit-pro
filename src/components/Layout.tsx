@@ -41,7 +41,7 @@ export default function Layout() {
           {/* Logo */}
           <div className="p-6 border-b">
             <div className="flex items-center justify-center">
-              <img src="/logo.png" alt="MNDF Toolkit Pro" className="w-28 h-28 object-contain" />
+              <img src="/logo.png" alt="MNDF Toolkit Pro" className="w-36 h-36 object-contain" />
             </div>
           </div>
 
@@ -95,7 +95,7 @@ export default function Layout() {
       <div className="flex-1 flex flex-col min-w-0">
         {/* Mobile Header */}
         <header className="lg:hidden bg-white shadow-sm p-4 flex items-center justify-between">
-          <img src="/logo.png" alt="MNDF" className="w-20 h-20 object-contain" />
+          <img src="/logo.png" alt="MNDF" className="w-28 h-28 object-contain" />
           <button
             onClick={() => setSidebarOpen(true)}
             className="p-2 text-gray-600 hover:bg-gray-100 rounded-lg"
