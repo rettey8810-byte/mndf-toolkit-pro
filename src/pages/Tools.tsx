@@ -1,9 +1,10 @@
 import { useEffect, useState } from 'react';
 import { collection, getDocs, addDoc, updateDoc, deleteDoc, doc, query, orderBy } from 'firebase/firestore';
 import { db } from '../firebase';
+import { Link } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 import type { Tool } from '../types';
-import { Plus, Search, Edit2, Trash2, X } from 'lucide-react';
+import { Plus, Search, Edit2, Trash2, X, ArrowRightLeft, CheckCircle } from 'lucide-react';
 import ImageUpload from '../components/ImageUpload';
 import { logAction } from '../scripts/auditLog';
 
@@ -26,6 +27,7 @@ export default function Tools() {
   const [showAddModal, setShowAddModal] = useState(false);
   const [showEditModal, setShowEditModal] = useState(false);
   const [editingTool, setEditingTool] = useState<Tool | null>(null);
+  const [viewingTool, setViewingTool] = useState<Tool | null>(null);
   const [formData, setFormData] = useState<ToolFormData>({
     name: '',
     category: 'IT Equipment',
@@ -241,7 +243,7 @@ export default function Tools() {
       {/* Tools Grid */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
         {filteredTools.map((tool) => (
-          <div key={tool.id} className="bg-white rounded-xl shadow-sm p-6">
+          <div key={tool.id} onClick={() => setViewingTool(tool)} className="bg-white rounded-xl shadow-sm p-6 cursor-pointer hover:shadow-md transition-shadow">
             <div className="flex items-start justify-between">
               <div className="flex-1">
                 <h3 className="font-semibold text-gray-800">{tool.name}</h3>
@@ -254,7 +256,7 @@ export default function Tools() {
                 <div className="flex gap-2">
                   {(hasPermission('editTools') || isSuperAdmin()) && (
                     <button
-                      onClick={() => openEditModal(tool)}
+                      onClick={(e) => { e.stopPropagation(); openEditModal(tool); }}
                       className="p-2 text-gray-400 hover:text-olive-600 hover:bg-olive-50 rounded-lg transition-colors"
                     >
                       <Edit2 className="w-4 h-4" />
@@ -262,7 +264,7 @@ export default function Tools() {
                   )}
                   {(hasPermission('deleteTools') || isSuperAdmin()) && (
                     <button
-                      onClick={() => handleDeleteTool(tool)}
+                      onClick={(e) => { e.stopPropagation(); handleDeleteTool(tool); }}
                       className="p-2 text-gray-400 hover:text-red-600 hover:bg-red-50 rounded-lg transition-colors"
                     >
                       <Trash2 className="w-4 h-4" />
@@ -492,6 +494,95 @@ export default function Tools() {
                   </button>
                 </div>
               </form>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* Tool Details Modal */}
+      {viewingTool && (
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50">
+          <div className="bg-white rounded-xl shadow-xl w-full max-w-lg max-h-[90vh] overflow-y-auto">
+            <div className="p-6">
+              <div className="flex items-center justify-between mb-6">
+                <h2 className="text-xl font-bold text-gray-800">{viewingTool.name}</h2>
+                <button onClick={() => setViewingTool(null)} className="p-2 hover:bg-gray-100 rounded-lg">
+                  <X className="w-5 h-5" />
+                </button>
+              </div>
+
+              {viewingTool.imageUrl && (
+                <div className="mb-6">
+                  <img 
+                    src={viewingTool.imageUrl} 
+                    alt={viewingTool.name}
+                    className="w-full h-48 object-cover rounded-lg"
+                  />
+                </div>
+              )}
+
+              <div className="grid grid-cols-2 gap-4 mb-6">
+                <div className="bg-gray-50 p-3 rounded-lg">
+                  <p className="text-sm text-gray-500">Tool ID</p>
+                  <p className="font-medium text-gray-800">{viewingTool.toolId}</p>
+                </div>
+                <div className="bg-gray-50 p-3 rounded-lg">
+                  <p className="text-sm text-gray-500">Category</p>
+                  <p className="font-medium text-gray-800">{viewingTool.category}</p>
+                </div>
+                <div className="bg-gray-50 p-3 rounded-lg">
+                  <p className="text-sm text-gray-500">Condition</p>
+                  <span className={`inline-block px-2 py-1 text-xs rounded-full ${getConditionColor(viewingTool.condition)}`}>
+                    {viewingTool.condition}
+                  </span>
+                </div>
+                <div className="bg-gray-50 p-3 rounded-lg">
+                  <p className="text-sm text-gray-500">Location</p>
+                  <p className="font-medium text-gray-800">{viewingTool.location}</p>
+                </div>
+                <div className="bg-gray-50 p-3 rounded-lg">
+                  <p className="text-sm text-gray-500">Total Quantity</p>
+                  <p className="font-medium text-gray-800">{viewingTool.quantity}</p>
+                </div>
+                <div className="bg-gray-50 p-3 rounded-lg">
+                  <p className="text-sm text-gray-500">Available</p>
+                  <p className={`font-medium ${viewingTool.availableQuantity < 3 ? 'text-red-600' : 'text-green-600'}`}>
+                    {viewingTool.availableQuantity}
+                  </p>
+                </div>
+              </div>
+
+              {/* Action Buttons */}
+              <div className="flex gap-3">
+                {viewingTool.availableQuantity > 0 && (hasPermission('lendTools') || isSuperAdmin()) && (
+                  <Link
+                    to="/lending"
+                    state={{ selectedTool: viewingTool }}
+                    onClick={() => setViewingTool(null)}
+                    className="flex-1 flex items-center justify-center gap-2 px-4 py-2 bg-olive-600 text-white rounded-lg hover:bg-olive-700 transition-colors"
+                  >
+                    <ArrowRightLeft className="w-4 h-4" />
+                    Issue Tool
+                  </Link>
+                )}
+                {viewingTool.quantity - viewingTool.availableQuantity > 0 && (hasPermission('returnTools') || isSuperAdmin()) && (
+                  <Link
+                    to="/lending"
+                    state={{ selectedTool: viewingTool, action: 'receive' }}
+                    onClick={() => setViewingTool(null)}
+                    className="flex-1 flex items-center justify-center gap-2 px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors"
+                  >
+                    <CheckCircle className="w-4 h-4" />
+                    Receive Back
+                  </Link>
+                )}
+                <button
+                  onClick={() => { setViewingTool(null); openEditModal(viewingTool); }}
+                  className="px-4 py-2 border border-gray-300 text-gray-700 rounded-lg hover:bg-gray-50"
+                >
+                  Edit
+                </button>
+              </div>
             </div>
           </div>
         </div>

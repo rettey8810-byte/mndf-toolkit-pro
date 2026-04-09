@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react';
 import { collection, getDocs, query, orderBy, limit } from 'firebase/firestore';
 import { db } from '../firebase';
 import { useAuth } from '../context/AuthContext';
+import { useNavigate } from 'react-router-dom';
 import type { DashboardStats, Tool, Transaction, Staff } from '../types';
 import ImportToolsButton from '../components/ImportToolsButton';
 import SessionTimeout from '../components/SessionTimeout';
@@ -14,6 +15,7 @@ import {
 
 export default function EnhancedDashboard() {
   const { hasPermission, isSuperAdmin } = useAuth();
+  const navigate = useNavigate();
   const [stats, setStats] = useState<DashboardStats>({
     totalTools: 0, availableTools: 0, borrowedTools: 0,
     underMaintenance: 0, overdueItems: 0, lowStockItems: 0,
@@ -99,10 +101,10 @@ export default function EnhancedDashboard() {
   };
 
   const statCards = [
-    { title: 'Total Tools', value: stats.totalTools, icon: Package, color: 'from-olive-600 to-olive-700', border: 'border-olive-200' },
-    { title: 'Available', value: stats.availableTools, icon: CheckCircle, color: 'from-green-600 to-green-700', border: 'border-green-200' },
-    { title: 'Borrowed', value: stats.borrowedTools, icon: ArrowRightLeft, color: 'from-sand-500 to-sand-600', border: 'border-sand-200' },
-    { title: 'Maintenance', value: stats.underMaintenance, icon: Wrench, color: 'from-amber-600 to-amber-700', border: 'border-amber-200' },
+    { title: 'Total Tools', value: stats.totalTools, icon: Package, color: 'from-olive-600 to-olive-700', border: 'border-olive-200', path: '/tools', filter: 'all' },
+    { title: 'Available', value: stats.availableTools, icon: CheckCircle, color: 'from-green-600 to-green-700', border: 'border-green-200', path: '/tools', filter: 'available' },
+    { title: 'Borrowed', value: stats.borrowedTools, icon: ArrowRightLeft, color: 'from-sand-500 to-sand-600', border: 'border-sand-200', path: '/lending', filter: 'borrowed' },
+    { title: 'Maintenance', value: stats.underMaintenance, icon: Wrench, color: 'from-amber-600 to-amber-700', border: 'border-amber-200', path: '/tools', filter: 'maintenance' },
   ];
 
   if (loading) {
@@ -137,7 +139,11 @@ export default function EnhancedDashboard() {
       {/* Stats Grid */}
       <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
         {statCards.map((stat) => (
-          <div key={stat.title} className={`bg-white rounded-xl shadow-md border-l-4 ${stat.border} p-5 hover:shadow-lg transition-all transform hover:-translate-y-1`}>
+          <div 
+            key={stat.title} 
+            onClick={() => navigate(stat.path, { state: { filter: stat.filter } })}
+            className={`bg-white rounded-xl shadow-md border-l-4 ${stat.border} p-5 hover:shadow-lg transition-all transform hover:-translate-y-1 cursor-pointer`}
+          >
             <div className="flex items-center gap-4">
               <div className={`w-14 h-14 rounded-xl bg-gradient-to-br ${stat.color} flex items-center justify-center shadow-md`}>
                 <stat.icon className="w-7 h-7 text-white" />
