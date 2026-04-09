@@ -1,4 +1,4 @@
-import { collection, addDoc, Timestamp, query, getDocs, orderBy, limit } from 'firebase/firestore';
+import { collection, addDoc, Timestamp, query, getDocs, orderBy, limit, onSnapshot } from 'firebase/firestore';
 import { db } from '../firebase';
 
 export type AuditAction = 
@@ -67,6 +67,29 @@ export async function getRecentAuditLogs(
     console.error('Error fetching audit logs:', error);
     return [];
   }
+}
+
+// Real-time subscription to audit logs
+export function subscribeToAuditLogs(
+  callback: (logs: (AuditLogEntry & { id: string })[]) => void,
+  limit_count: number = 100
+) {
+  const q = query(
+    collection(db, 'auditLogs'),
+    orderBy('timestamp', 'desc'),
+    limit(limit_count)
+  );
+  
+  return onSnapshot(q, (snapshot) => {
+    const logs = snapshot.docs.map(doc => ({
+      ...doc.data(),
+      id: doc.id,
+      timestamp: doc.data().timestamp?.toDate(),
+    } as AuditLogEntry & { id: string }));
+    callback(logs);
+  }, (error) => {
+    console.error('Error in audit logs subscription:', error);
+  });
 }
 
 export function formatActionName(action: AuditAction): string {

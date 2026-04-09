@@ -3,7 +3,7 @@ import { collection, getDocs, addDoc, updateDoc, doc, query, orderBy } from 'fir
 import { db } from '../firebase';
 import { useAuth } from '../context/AuthContext';
 import type { Tool, Staff } from '../types';
-import { Plus, Trash2, X, Calendar, CheckCircle, Bookmark } from 'lucide-react';
+import { Plus, Trash2, X, Calendar, CheckCircle, Bookmark, AlertCircle } from 'lucide-react';
 import { format, isAfter, isBefore, addDays } from 'date-fns';
 
 interface Reservation {
@@ -39,9 +39,23 @@ export default function Reservations() {
     purpose: '',
     notes: '',
   });
+  const [toolSearch, setToolSearch] = useState('');
+  const [staffSearch, setStaffSearch] = useState('');
+  const [showToolDropdown, setShowToolDropdown] = useState(false);
+  const [showStaffDropdown, setShowStaffDropdown] = useState(false);
 
   useEffect(() => {
     fetchData();
+  }, []);
+
+  // Close dropdowns when clicking outside
+  useEffect(() => {
+    const handleClickOutside = () => {
+      setShowToolDropdown(false);
+      setShowStaffDropdown(false);
+    };
+    document.addEventListener('click', handleClickOutside);
+    return () => document.removeEventListener('click', handleClickOutside);
   }, []);
 
   const fetchData = async () => {
@@ -311,37 +325,82 @@ export default function Reservations() {
                 </button>
               </div>
               <form onSubmit={handleCreateReservation} className="space-y-4">
-                <div>
+                <div className="relative">
                   <label className="block text-sm font-medium text-gray-700 mb-1">Tool</label>
-                  <select
+                  <input
+                    type="text"
                     required
-                    value={formData.toolId}
-                    onChange={(e) => setFormData({ ...formData, toolId: e.target.value })}
+                    placeholder="Type to search tools..."
+                    value={toolSearch || (formData.toolId ? tools.find(t => t.id === formData.toolId)?.name : '')}
+                    onChange={(e) => {
+                      setToolSearch(e.target.value);
+                      setShowToolDropdown(true);
+                      if (!e.target.value) setFormData({ ...formData, toolId: '' });
+                    }}
+                    onFocus={() => setShowToolDropdown(true)}
                     className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-olive-500 outline-none"
-                  >
-                    <option value="">Select Tool</option>
-                    {tools.filter(t => t.availableQuantity > 0).map((t) => (
-                      <option key={t.id} value={t.id}>
-                        {t.name} ({t.availableQuantity} available)
-                      </option>
-                    ))}
-                  </select>
+                  />
+                  {showToolDropdown && (
+                    <div className="absolute z-10 w-full mt-1 bg-white border border-gray-300 rounded-lg shadow-lg max-h-48 overflow-auto">
+                      {tools
+                        .filter(t => t.availableQuantity > 0)
+                        .filter(t => t.name.toLowerCase().includes(toolSearch.toLowerCase()))
+                        .map((t) => (
+                          <div
+                            key={t.id}
+                            onClick={() => {
+                              setFormData({ ...formData, toolId: t.id });
+                              setToolSearch('');
+                              setShowToolDropdown(false);
+                            }}
+                            className="px-4 py-2 hover:bg-gray-100 cursor-pointer"
+                          >
+                            {t.name} ({t.availableQuantity} available)
+                          </div>
+                        ))}
+                      {tools.filter(t => t.availableQuantity > 0).filter(t => t.name.toLowerCase().includes(toolSearch.toLowerCase())).length === 0 && (
+                        <div className="px-4 py-2 text-gray-500">No tools found</div>
+                      )}
+                    </div>
+                  )}
                 </div>
-                <div>
+                <div className="relative">
                   <label className="block text-sm font-medium text-gray-700 mb-1">Staff Member</label>
-                  <select
+                  <input
+                    type="text"
                     required
-                    value={formData.staffId}
-                    onChange={(e) => setFormData({ ...formData, staffId: e.target.value })}
+                    placeholder="Type to search staff..."
+                    value={staffSearch || (formData.staffId ? staff.find(s => s.id === formData.staffId)?.name : '')}
+                    onChange={(e) => {
+                      setStaffSearch(e.target.value);
+                      setShowStaffDropdown(true);
+                      if (!e.target.value) setFormData({ ...formData, staffId: '' });
+                    }}
+                    onFocus={() => setShowStaffDropdown(true)}
                     className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-olive-500 outline-none"
-                  >
-                    <option value="">Select Staff</option>
-                    {staff.map((s) => (
-                      <option key={s.id} value={s.id}>
-                        {s.name} - {s.rank}
-                      </option>
-                    ))}
-                  </select>
+                  />
+                  {showStaffDropdown && (
+                    <div className="absolute z-10 w-full mt-1 bg-white border border-gray-300 rounded-lg shadow-lg max-h-48 overflow-auto">
+                      {staff
+                        .filter(s => s.name.toLowerCase().includes(staffSearch.toLowerCase()) || s.rank?.toLowerCase().includes(staffSearch.toLowerCase()))
+                        .map((s) => (
+                          <div
+                            key={s.id}
+                            onClick={() => {
+                              setFormData({ ...formData, staffId: s.id });
+                              setStaffSearch('');
+                              setShowStaffDropdown(false);
+                            }}
+                            className="px-4 py-2 hover:bg-gray-100 cursor-pointer"
+                          >
+                            {s.name} - {s.rank}
+                          </div>
+                        ))}
+                      {staff.filter(s => s.name.toLowerCase().includes(staffSearch.toLowerCase()) || s.rank?.toLowerCase().includes(staffSearch.toLowerCase())).length === 0 && (
+                        <div className="px-4 py-2 text-gray-500">No staff found</div>
+                      )}
+                    </div>
+                  )}
                 </div>
                 <div className="grid grid-cols-2 gap-4">
                   <div>

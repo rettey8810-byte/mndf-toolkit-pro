@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { getRecentAuditLogs, formatActionName, getActionColor, type AuditLogEntry } from '../scripts/auditLog';
+import { subscribeToAuditLogs, formatActionName, getActionColor, type AuditLogEntry } from '../scripts/auditLog';
 import { useAuth } from '../context/AuthContext';
 import { Shield, History, Filter, Download, X } from 'lucide-react';
 
@@ -10,19 +10,13 @@ export default function AuditLogs() {
   const [filter, setFilter] = useState('');
 
   useEffect(() => {
-    fetchLogs();
-  }, []);
-
-  const fetchLogs = async () => {
-    try {
-      const data = await getRecentAuditLogs(100);
-      setLogs(data as (AuditLogEntry & { id: string })[]);
-    } catch (error) {
-      console.error('Error fetching audit logs:', error);
-    } finally {
+    const unsubscribe = subscribeToAuditLogs((newLogs) => {
+      setLogs(newLogs);
       setLoading(false);
-    }
-  };
+    }, 100);
+    
+    return () => unsubscribe();
+  }, []);
 
   const filteredLogs = logs.filter(log => 
     !filter || 
