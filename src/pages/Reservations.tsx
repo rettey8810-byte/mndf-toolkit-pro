@@ -29,6 +29,7 @@ export default function Reservations() {
   const [tools, setTools] = useState<Tool[]>([]);
   const [staff, setStaff] = useState<Staff[]>([]);
   const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
   const [showModal, setShowModal] = useState(false);
   const [formData, setFormData] = useState({
     toolId: '',
@@ -63,8 +64,13 @@ export default function Reservations() {
       setReservations(resData);
       setTools(toolsSnap.docs.map(d => ({ ...d.data(), id: d.id } as Tool)));
       setStaff(staffSnap.docs.map(d => ({ ...d.data(), id: d.id } as Staff)));
-    } catch (error) {
-      console.error('Error fetching reservations:', error);
+    } catch (err: any) {
+      console.error('Error fetching reservations:', err);
+      if (err?.message?.includes('permission') || err?.code === 'permission-denied') {
+        setError('Firebase permissions error. Please check Firestore security rules and ensure you are logged in.');
+      } else {
+        setError('Failed to load data. Please refresh the page.');
+      }
     } finally {
       setLoading(false);
     }
@@ -146,6 +152,23 @@ export default function Reservations() {
     return (
       <div className="flex items-center justify-center h-64">
         <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-olive-600"></div>
+      </div>
+    );
+  }
+
+  if (error) {
+    return (
+      <div className="flex items-center justify-center h-64">
+        <div className="text-center">
+          <AlertCircle className="w-12 h-12 text-red-500 mx-auto mb-4" />
+          <p className="text-red-600 font-medium mb-2">{error}</p>
+          <button 
+            onClick={() => window.location.reload()} 
+            className="px-4 py-2 bg-olive-600 text-white rounded-lg hover:bg-olive-700"
+          >
+            Retry
+          </button>
+        </div>
       </div>
     );
   }
